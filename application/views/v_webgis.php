@@ -37,6 +37,12 @@
 	var sianghari2019= L.layerGroup();
 	var malamhari2019= L.layerGroup();
 
+	var heatmapTahun2019= L.layerGroup();
+	var heatmapDinihari2019= L.layerGroup();
+	var heatmapPagihari2019= L.layerGroup();
+	var heatmapSianghari2019= L.layerGroup();
+	var heatmapMalamhari2019= L.layerGroup();
+
 	var myStyle = {
 		"color": "#000000",
 		"weight": 2.5,
@@ -83,6 +89,12 @@
 	var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>assets/geojson/sianghari2019.geojson"],{onEachFeature:popUp3}).addTo(sianghari2019);
 	var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>assets/geojson/malamhari2019.geojson"],{onEachFeature:popUp3}).addTo(malamhari2019);
 
+	var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>geojson/Tahun2019.geojson"],{onEachFeature:popUp3}).addTo(heatmapTahun2019);
+	var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>geojson/dinihari2019.geojson"],{onEachFeature:popUp3 }).addTo(heatmapDinihari2019);
+	var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>geojson/pagihari2019.geojson"],{onEachFeature:popUp3}).addTo(heatmapPagihari2019);
+	var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>geojson/sianghari2019.geojson"],{onEachFeature:popUp3}).addTo(heatmapSianghari2019);
+	var jsonTest = new L.GeoJSON.AJAX(["<?= base_url() ?>geojson/malamhari2019.geojson"],{onEachFeature:popUp3}).addTo(heatmapMalamhari2019);
+
 	var baseMaps = {
 		"Satellite": peta2,
 		"Streets": peta3,
@@ -97,6 +109,12 @@
 		'Pukul 06.01-12.00 Tahun 2019': pagihari2019,
 		'Pukul 12.01-18.00 Tahun 2019': sianghari2019,
 		'Pukul 18.01-00.00 Tahun 2019': malamhari2019,
+
+		'Heatmap Kriminalitas Tahun 2019': heatmapTahun2019,
+		'Heatmap Pukul 00.01-06.00 Tahun 2019': heatmapDinihari2019,
+		'Heatmap Pukul 06.01-12.00 Tahun 2019': heatmapPagihari2019,
+		'Heatmap Pukul 12.01-18.00 Tahun 2019': heatmapSianghari2019,
+		'Heatmap Pukul 18.01-00.00 Tahun 2019': heatmapMalamhari2019,
 	};
 
 	var diniHari = [
@@ -310,11 +328,11 @@
 		[ -6.2490632, 107.098615, "50" ]
 	];
 
-	L.heatLayer(diniHari, {radius: 25}).addTo(dinihari2019);
-	L.heatLayer(pagi, {radius: 25}).addTo(pagihari2019);
-	L.heatLayer(siang, {radius: 25}).addTo(sianghari2019);
-	L.heatLayer(malam, {radius: 25}).addTo(malamhari2019);
-	L.heatLayer(tahun2019, {radius: 25}).addTo(Tahun2019);
+	L.heatLayer(diniHari, {radius: 25}).addTo(heatmapDinihari2019);
+	L.heatLayer(pagi, {radius: 25}).addTo(heatmapPagihari2019);
+	L.heatLayer(siang, {radius: 25}).addTo(heatmapSianghari2019);
+	L.heatLayer(malam, {radius: 25}).addTo(heatmapMalamhari2019);
+	L.heatLayer(tahun2019, {radius: 25}).addTo(heatmapTahun2019);
 
 	L.control.layers(baseMaps, overlayer).addTo(map);
 	
